@@ -1,0 +1,84 @@
+commands:
+- exec:
+    commandLine: /bin/bash ./install.sh
+    component: runtime
+    group:
+      isDefault: true
+      kind: build
+    workingDir: ${PROJECT_SOURCE}
+  id: install
+- exec:
+    commandLine: /root/entrypoint.sh
+    component: runtime
+    group:
+      isDefault: true
+      kind: run
+    workingDir: ${PROJECT_SOURCE}
+  id: run
+- exec:
+    commandLine: npm run debug
+    component: runtime
+    group:
+      isDefault: true
+      kind: debug
+    workingDir: ${PROJECT_SOURCE}
+  id: debug
+- exec:
+    commandLine: npm test
+    component: runtime
+    group:
+      isDefault: true
+      kind: test
+    workingDir: ${PROJECT_SOURCE}
+  id: test
+components:
+- container:
+    args:
+    - tail
+    - -f
+    - /dev/null
+    endpoints:
+    - name: http-node
+      targetPort: 8080
+    - exposure: none
+      name: debug
+      targetPort: 5858
+    env:
+    - name: DEBUG_PORT
+      value: "5858"
+    - name: CATALOGUE_HOST
+      value: catalogue
+    - name: USER_HOST
+      value: user
+    - name: CART_HOST
+      value: cart
+    - name: SHIPPING_HOST
+      value: shipping
+    - name: PAYMENT_HOST
+      value: payment
+    - name: RATINGS_HOST
+      value: ratings
+    - name: INSTANA_SERVICE_NAME
+      value: nginx-web
+    image: docker.io/s390x/nginx:1.21.6
+    memoryLimit: 1024Mi
+    mountSources: true
+  name: runtime
+metadata:
+  description: Node.js 16 application
+  displayName: Node.js Runtime
+  icon: https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg
+  language: JavaScript
+  name: web
+  projectType: Node.js
+  tags:
+  - Node.js
+  - Express
+  - ubi8
+  version: 2.1.1
+schemaVersion: 2.1.0
+starterProjects:
+- git:
+    remotes:
+      origin: https://github.com/odo-devfiles/nodejs-ex.git
+  name: nodejs-starter
