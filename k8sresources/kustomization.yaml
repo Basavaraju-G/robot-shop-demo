@@ -1,0 +1,27 @@
+resources:
+- cart-deployment.yaml
+- dispatch-deployment.yaml
+- mysql-deployment.yaml
+- rabbitmq-deployment.yaml
+- user-deployment.yaml
+- redis-statefulset.yaml
+- catalogue-deployment.yaml
+- mongodb-deployment.yaml
+- payment-deployment.yaml
+- ratings-deployment.yaml
+- shipping-deployment.yaml
+- web-deployment.yaml
+- redis-service.yaml
+- web-service.yaml
+- cart-service.yaml
+- dispatch-service.yaml
+- mysql-service.yaml
+- rabbitmq-service.yaml
+- user-service.yaml
+- catalogue-service.yaml
+- mongodb-service.yaml
+- payment-service.yaml
+- ratings-service.yaml
+- shipping-service.yaml 
+- web-route.yaml
+
