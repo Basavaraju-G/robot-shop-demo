@@ -2,3 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../k8sresources/
+images:
+- digest: sha256:3aad54dbda99a19c74e563f7227d7ccf03cefc68c640f62118a60511aa46ab4b
+  name: quay.io/bgirriam/robotshop-mongodb
+  newName: quay.io/bgirriam/robotshop-mongodb
