@@ -21,7 +21,7 @@ spec:
         service: mongodb
     spec:
       containers:
-      - image: quay.io/robotshop/rs-mongodb:latest
+      - image: quay.io/bgirriam/robotshop-mongodb:latest
         imagePullPolicy: IfNotPresent
         name: mongodb
         ports:
